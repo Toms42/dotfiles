@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:/afs/andrew/course/15/122/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -8,7 +7,7 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussel"
+ZSH_THEME="robbyrussell"
 
 #if $(screen -ls | grep -q pts); then  screen -x; else screen -R; fi
 
@@ -88,5 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+alias nemo="nemo . &"
+alias catmake="pushd ~/catkin_ws > /dev/null  && catkin build && source devel/setup.zsh && popd > /dev/null"
 
 #clear
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
+
+source /opt/ros/melodic/setup.zsh
