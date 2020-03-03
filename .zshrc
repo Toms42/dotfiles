@@ -94,14 +94,52 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias catnip="pushd ~/catkin_ws > /dev/null \
+alias catmake="pushd ~/catkin_ws > /dev/null \
 && catkin build \
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias catlick="pushd ~/catkin_ws > /dev/null \
+alias catclean="pushd ~/catkin_ws > /dev/null \
 && catkin clean \
 && source devel/setup.zsh \
 && popd > /dev/null"
 alias catsh="source ~/catkin_ws/devel/setup.zsh"
 alias catdep="rosdep install --from-paths ~/catkin_ws/src/TAUV-ROS-Packages --ignore-src -r -y"
+alias wcatmake="pushd ~/whac_ws > /dev/null \
+&& catkin build --make-args install\
+&& source devel/setup.zsh \
+&& popd > /dev/null"
+alias wcatclean="pushd ~/whac_ws > /dev/null \
+&& catkin clean \
+&& popd > /dev/null"
+alias wcatsh="source ~/whac_ws/devel/setup.zsh"
+alias wcatdep="rosdep install --from-paths ~/whac_ws/src/build18 --ignore-src -r -y"
+
+alias scatsh="source ~/proj/robot_software/robot_driver/devel/setup.zsh \
+&& source ~/proj/robot_software/ground_based_autonomy/devel/setup.zsh \
+&& source ~/proj/robot_software/laser_odometry/devel/setup.zsh"
+
+alias cliffmake="pushd ~/clifford_ws > /dev/null \
+&& catkin build \
+&& source devel/setup.zsh \
+&& popd > /dev/null"
+alias cliffsh="pushd ~/clifford_ws > /dev/null \
+&& source devel/setup.zsh \
+&& popd > /dev/null"
+alias cliffdep="rosdep install --from-paths ~/clifford_ws/src/clifford-control --ignore-src -r -y"
+alias cliffclean="pushd ~/clifford_ws > /dev/null \
+&& catkin clean \
+&& source devel/setup.zsh \
+&& popd > /dev/null"
+
 source /opt/ros/melodic/setup.zsh
+catsh
+# wcatsh
+# scatsh
+
+alias python="rlwrap python"
+
+export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
+# export ROS_HOSTNAME=$HOST.local
+# export ROS_MASTER_URI=http://$HOST.local:11311
+export ROS_HOSTNAME=$HOST.local
+export ROS_MASTER_URI=http://$HOST.local:11311
