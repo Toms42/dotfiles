@@ -90,8 +90,26 @@ source $ZSH/oh-my-zsh.sh
 #
 alias nemo="nemo . &"
 alias catmake="pushd ~/catkin_ws > /dev/null  && catkin build && source devel/setup.zsh && popd > /dev/null"
+alias catclean="rm -rf ~/catkin_ws/build ~/catkine_ws/debug"
+alias catsh="source ~/catkin_ws/devel/setup.zsh"
+alias catdep="rosdep install --from-paths ~/catkin_ws/src/TAUV-ROS-Packages --ignore-src -r -y"
+alias cliffmake="pushd ~/clifford_ws > /dev/null  && catkin build && source devel/setup.zsh && popd > /dev/null"
+alias cliffsh="source ~/clifford_ws/devel/setup.zsh"
+alias cliffdep="rosdep install --from-paths ~/clifford_ws/src/clifford_control --ignore-src -r -y"
+export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
+
+alias branchclean="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+
+
+alias python="rlwrap python"
+alias fixsound="pulseaudio -k && sudo alsa force-reload"
+
 
 #clear
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 
 source /opt/ros/melodic/setup.zsh
+source /usr/share/gazebo/setup.sh
+# source ~/catkin_ws/devel/setup.zsh
+export ROS_HOSTNAME=$HOST.local
+export ROS_MASTER_URI=http://$HOST.local:11311

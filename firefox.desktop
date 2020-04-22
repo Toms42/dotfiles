@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Encoding=UTF-8
+Name=Firefox
+Icon=/opt/firefox/firefox.png
+Exec="/opt/firefox/firefox" %u
+Comment=Firefox web browser
+Categories=Network
+Terminal=false
