@@ -96,39 +96,36 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nemo="nemo . &"
 
-alias catmake="pushd ~/catkin_ws > /dev/null \
+alias catmake="pushd ~/workspaces/catkin_ws > /dev/null \
 && catkin build \
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias catclean="pushd ~/catkin_ws > /dev/null \
+alias catclean="pushd ~/workspaces/catkin_ws > /dev/null \
 && catkin clean \
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias catsh="source ~/catkin_ws/devel/setup.zsh"
-alias catdep="rosdep install --from-paths ~/catkin_ws/src/TAUV-ROS-Packages --ignore-src -r -y"
-alias wcatmake="pushd ~/whac_ws > /dev/null \
+alias catsh="source ~/workspaces/catkin_ws/devel/setup.zsh"
+alias catdep="rosdep install --from-paths ~/workspaces/catkin_ws/src/TAUV-ROS-Packages --ignore-src -y"
+alias dcatmake="pushd ~/workspaces/drone_ws > /dev/null \
 && catkin build --make-args install\
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias wcatclean="pushd ~/whac_ws > /dev/null \
+alias dcatclean="pushd ~/workspaces/drone_ws > /dev/null \
 && catkin clean \
 && popd > /dev/null"
-alias wcatsh="source ~/whac_ws/devel/setup.zsh"
-alias wcatdep="rosdep install --from-paths ~/whac_ws/src/build18 --ignore-src -r -y"
+alias dcatsh="source ~/workspaces/drone_ws/devel/setup.zsh"
+alias dcatdep="rosdep install --from-paths ~/workspaces/drone_ws/src --ignore-src -y"
+alias resetdrone="rostopic pub /uav/input/reset std_msgs/Empty \"{}\""
 
-alias scatsh="source ~/proj/robot_software/robot_driver/devel/setup.zsh \
-&& source ~/proj/robot_software/ground_based_autonomy/devel/setup.zsh \
-&& source ~/proj/robot_software/laser_odometry/devel/setup.zsh"
-
-alias cliffmake="pushd ~/clifford_ws > /dev/null \
+alias cliffmake="pushd ~/workspaces/clifford_ws > /dev/null \
 && catkin build \
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias cliffsh="pushd ~/clifford_ws > /dev/null \
+alias cliffsh="pushd ~/workspaces/clifford_ws > /dev/null \
 && source devel/setup.zsh \
 && popd > /dev/null"
-alias cliffdep="rosdep install --from-paths ~/clifford_ws/src/clifford-control --ignore-src -r -y"
-alias cliffclean="pushd ~/clifford_ws > /dev/null \
+alias cliffdep="rosdep install --from-paths ~/workspaces/clifford_ws/src/clifford-control --ignore-src -r -y"
+alias cliffclean="pushd ~/workspaces/clifford_ws > /dev/null \
 && catkin clean \
 && source devel/setup.zsh \
 && popd > /dev/null"
@@ -142,7 +139,11 @@ alias python="rlwrap python"
 alias branchclean="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
 alias python="rlwrap python"
 alias fixsound="pulseaudio -k && sudo alsa force-reload"
+alias minty="figlet \"M i n t y     :) \" | lolcat"
+alias cll="ll | lolcat"
 
 export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
 export ROS_HOSTNAME=$HOST.local
 export ROS_MASTER_URI=http://$HOST.local:11311
+
+figlet "M i n t y     :) " | lolcat
