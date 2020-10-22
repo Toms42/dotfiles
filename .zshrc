@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/tom/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -130,20 +130,18 @@ alias cliffclean="pushd ~/workspaces/clifford_ws > /dev/null \
 && source devel/setup.zsh \
 && popd > /dev/null"
 
-source /opt/ros/melodic/setup.zsh
-catsh
+# source /opt/ros/melodic/setup.zsh
+# catsh
 # wcatsh
 # scatsh
 
-alias python="rlwrap python"
 alias branchclean="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
-alias python="rlwrap python"
 alias fixsound="pulseaudio -k && sudo alsa force-reload"
 alias minty="figlet \"M i n t y     :) \" | lolcat"
 alias cll="ll | lolcat"
 
-export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
+# export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
 export ROS_HOSTNAME=$HOST.local
 export ROS_MASTER_URI=http://$HOST.local:11311
 
-figlet "M i n t y     :) " | lolcat
+figlet "$HOST     :) " | lolcat
