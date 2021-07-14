@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+  export ZSH="/home/tom/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -94,6 +94,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# xinput map-to-output 12 eDP-1-1
+xinput list | grep Touchscreen | sed -E 's/.*id=([0-9]*).*/\1/' | xargs -I _ xinput map-to-output _ eDP-1-1
+
 alias nemo="nemo . &"
 
 alias catmake="pushd ~/workspaces/catkin_ws > /dev/null \
@@ -130,18 +134,43 @@ alias cliffclean="pushd ~/workspaces/clifford_ws > /dev/null \
 && source devel/setup.zsh \
 && popd > /dev/null"
 
-# source /opt/ros/melodic/setup.zsh
+#alias pf2make="pushd ~/workspaces/platform2_demo_auterion/ > /dev/null \
+#&& catkin_make \
+#&& source devel/setup.zsh \
+#&& popd > /dev/null"
+#alias pf2sh="pushd ~/workspaces/platform2_demo_auterion > /dev/null \
+#&& source devel/setup.zsh \
+#&& popd > /dev/null"
+#alias pf2dep="rosdep install --from-paths ~/workspaces/pf2_ws/src/ros_proto_code --ignore-src -r -y"
+#alias pf2clean="pushd ~/workspaces/platform2_demo_auterion > /dev/null \
+#&& rm -rf build devel log \
+#&& popd > /dev/null"
+
+
+source /opt/ros/noetic/setup.zsh
 # catsh
 # wcatsh
 # scatsh
 
+source ~/workspaces/platform2_demo_auterion/aliases.sh
+pf2sh
+
+alias python="rlwrap python"
 alias branchclean="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+alias python="rlwrap python"
 alias fixsound="pulseaudio -k && sudo alsa force-reload"
 alias minty="figlet \"M i n t y     :) \" | lolcat"
 alias cll="ll | lolcat"
 
-# export ROS_OS_OVERRIDE=ubuntu:18.04:bionic
-export ROS_HOSTNAME=$HOST.local
-export ROS_MASTER_URI=http://$HOST.local:11311
+export ROS_OS_OVERRIDE=ubuntu:20.04:focal
+# export ROS_HOSTNAME=$HOST.local
+# export ROS_MASTER_URI=http://172.16.0.5:11311
+# export ROS_MASTER_URI=http://$HOST.local:11311
+# export ROS_MASTER_URI=http://big-octo.local:11311
 
-figlet "$HOST     :) " | lolcat
+export MAVLINK_DIALECT=pf2_mavlink
+export MAVLINK20=1
+
+export PLATFORM2_WORKSPACE_PATH=~/workspaces/platform2_demo_auterion
+
+figlet "M i n t y     :) " | lolcat
